@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ma Routine Skincare & Sport</title>
+    
+    <meta name="theme-color" content="#121212">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ma Routine">
+    <link rel="apple-touch-icon" href="images/icon.png">
+
+    <style>
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --bg-card-hover: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-blue: #3b82f6;
+            --accent-gold: #fbbf24;
+            --border-radius: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            /* Empêche le "rebond" désagréable sur mobile */
+            overscroll-behavior-y: none; 
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 40px; /* Espace en bas pour ne pas coller à l'écran */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        h1 {
+            color: var(--text-main);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Section Produits */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--bg-card-hover);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 120px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .product-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        /* Section Règles d'Or */
+        .rules-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #333;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .rules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rules-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .rules-list li strong {
+            color: var(--text-main);
+        }
+
+        .rules-list li::before {
+            content: "🛡️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Onglets pour les jours (Rendus collants/sticky) */
+        .tabs-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--bg-main);
+            padding: 15px 0; /* Fond pour masquer le texte qui passe en dessous */
+            margin-bottom: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px 10px;
+            background-color: var(--bg-card);
+            border: 1px solid #333;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 120px;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        .tab-btn small {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: normal;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* Contenu des jours */
+        .tab-content {
+            display: none;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .time-block {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .time-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .time-block h3 {
+            color: var(--accent-blue);
+            margin-top: 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .step strong {
+            color: var(--text-main);
+            display: inline-block;
+            min-width: 90px;
+        }
+
+        .tag {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-left: 5px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .tag-blue {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-left: 5px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .objective {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .tabs { flex-direction: column; }
+            h1 { font-size: 1.5rem; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            /* Les boutons prennent moins de place en hauteur sur mobile quand on scrolle */
+            .tab-btn { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🌟 Ma Routine Skincare</h1>
+        <p style="color: var(--text-muted); margin-top: 0;">Anti-Imperfections & Sport</p>
+    </header>
+
+    <section>
+        <h2>🛍️ Mes Produits Essentiels</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/effaclar.jpg" alt="Effaclar Duo+M" onerror="this.src='https://placehold.co/150x150/ffffff/000000?text=Effaclar'">
+                </div>
+                <div class="product-name">La Roche-Posay<br>Effaclar Duo+M</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/cerave-gel.jpg" alt="CeraVe Gel Moussant" onerror="this.src='https://placehold.co/150x150/ffffff/000000?text=Gel+Moussant'">
+                </div>
+                <div class="product-name">CeraVe<br>Gel Moussant</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/cerave-pm.jpg" alt="CeraVe Crème PM" onerror="this.src='https://placehold.co/150x150/ffffff/000000?text=Creme+PM'">
+                </div>
+                <div class="product-name">CeraVe<br>Crème Visage PM</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/avene.jpg" alt="Avène Solaire" onerror="this.src='https://placehold.co/150x150/ffffff/000000?text=Solaire+SPF50'">
+                </div>
+                <div class="product-name">Avène<br>Solaire SPF 50+</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules-card">
+        <h2>Les Règles d'Or</h2>
+        <ul class="rules-list">
+            <li><strong>Les mains :</strong> Lavez-vous TOUJOURS les mains avec du savon avant de toucher votre visage.</li>
+            <li><strong>À la salle de sport :</strong> Utilisez une grande serviette pour les machines et une petite serviette propre (ou essuie-tout) UNIQUEMENT pour la sueur du visage. Ne mélangez jamais.</li>
+            <li><strong>Bandeau :</strong> Utilisez un bandeau propre à chaque séance.</li>
+            <li><strong>Le téléphone :</strong> Éloignez-le des joues (utilisez le haut-parleur ou des écouteurs) et désinfectez l'écran régulièrement.</li>
+            <li><strong>La nuit :</strong> Changez d'oreiller, ou retournez l'oreiller. Si toutes les faces ont été touchées au moins 1 fois, changez de taie d'oreiller et mettez à laver celles utilisées.</li>
+        </ul>
+    </section>
+
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" id="btn-jour1" onclick="openTab(event, 'jour1')">🗓️ JOUR 1<br><small>Salle (Mat) + Cours</small></button>
+            <button class="tab-btn" id="btn-jour2" onclick="openTab(event, 'jour2')">🗓️ JOUR 2<br><small>Salle (Mat) & Repos</small></button>
+            <button class="tab-btn" id="btn-jour3" onclick="openTab(event, 'jour3')">🗓️ JOUR 3<br><small>Cours + Salle (Aprem)</small></button>
+            <button class="tab-btn" id="btn-jour4" onclick="openTab(event, 'jour4')">🛋️ JOUR 4<br><small>Journée Repos</small></button>
+        </div>
+    </div>
+
+    <div id="jour1" class="tab-content active">
+        <div class="time-block">
+            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant la salle)</span></h3>
+            <div class="step"><strong>Action :</strong> Rincez simplement votre visage à l'eau tiède.</div>
+            <div class="step"><strong>Optionnel :</strong> Si le soleil tape fort sur le trajet, mettez une petite touche de crème solaire Avène SPF 50+.</div>
+        </div>
+        <div class="time-block">
+            <h3>🚿 Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Sous la douche)</span></h3>
+            <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
+            <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
+            <div class="step"><strong>Protéger :</strong> Attendez 1 minute, puis appliquez généreusement la crème solaire Avène SPF 50+ (équivalent de 2 lignes sur les doigts) pour protéger les cicatrices.</div>
+        </div>
+        <div class="time-block">
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
+            <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
+            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+        </div>
+    </div>
+
+    <div id="jour2" class="tab-content">
+        <div class="time-block">
+            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant la salle)</span></h3>
+            <div class="step"><strong>Action :</strong> Rincez simplement votre visage à l'eau tiède.</div>
+            <div class="step"><strong>Optionnel :</strong> Si le soleil tape fort sur le trajet, mettez une petite touche de crème solaire Avène SPF 50+.</div>
+        </div>
+        <div class="time-block">
+            <h3>🚿 Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Sous la douche)</span></h3>
+            <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
+            <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
+            <div class="step"><strong>Protéger :</strong> <span class="tag-blue">OPTIONNEL</span> La crème solaire Avène n'est pas obligatoire si vous restez à l'intérieur à l'abri du soleil. Attention toutefois : si vous passez la journée collé(e) à une fenêtre très ensoleillée, mettez-en une fine couche. Si vous sortez en appliquer avant de sortir !</div>
+        </div>
+        <div class="time-block">
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
+            <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
+            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+        </div>
+    </div>
+
+    <div id="jour3" class="tab-content">
+        <div class="time-block">
+            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant les cours)</span></h3>
+            <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
+            <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
+            <div class="step"><strong>Protéger :</strong> Attendez 1 minute, puis appliquez généreusement la crème solaire Avène SPF 50+ (équivalent de 2 lignes sur les doigts) pour protéger les cicatrices.</div>
+        </div>
+        <div class="time-block">
+            <h3>🏋️ Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Fin d'aprem / Début soirée)</span></h3>
+            <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
+            <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
+            <div class="step"><strong>Protéger :</strong> <span class="tag-blue">OPTIONNEL</span> La crème solaire Avène n'est pas obligatoire si vous restez à l'intérieur à l'abri du soleil. Attention toutefois : si vous passez la journée collé(e) à une fenêtre très ensoleillée, mettez-en une fine couche. Si vous sortez en appliquer avant de sortir !</div>
+        </div>
+        <div class="time-block">
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
+            <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
+            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+        </div>
+    </div>
+
+    <div id="jour4" class="tab-content">
+        <div class="objective">
+            L'objectif ici est de laisser la peau respirer un maximum.
+        </div>
+        <div class="time-block">
+            <h3>🌅 Le Matin</h3>
+            <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
+            <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
+            <div class="step"><strong>Protéger :</strong> <span class="tag-blue">OPTIONNEL</span> La crème solaire Avène n'est pas obligatoire si vous restez à l'intérieur à l'abri du soleil. Attention toutefois : si vous passez la journée collé(e) à une fenêtre très ensoleillée, mettez-en une fine couche. Si vous sortez en appliquer avant de sortir !</div>
+        </div>
+        <div class="time-block">
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
+            <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
+            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Fonction d'ouverture des onglets
+    function openTab(evt, tabName) {
+        // Cacher tous les contenus
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+
+        // Retirer la classe 'active' de tous les boutons
+        var tabBtns = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+
+        // Afficher le contenu actuel et ajouter la classe active au bouton
+        document.getElementById(tabName).classList.add("active");
+        
+        // Gérer le cas où on appelle la fonction via du code (sans événement click direct)
+        if(evt && evt.currentTarget) {
+            evt.currentTarget.classList.add("active");
+        } else {
+            document.getElementById('btn-' + tabName).classList.add("active");
+        }
+
+        // 🧠 SAUVEGARDE EN MÉMOIRE : On retient l'onglet cliqué
+        localStorage.setItem('activeRoutineDay', tabName);
+    }
+
+    // Au chargement de la page, on vérifie si un jour a été sauvegardé
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedDay = localStorage.getItem('activeRoutineDay');
+        // Si un jour est en mémoire, on l'ouvre automatiquement
+        if (savedDay) {
+            openTab(null, savedDay);
+        }
+    });
+</script>
+
+</body>
+</html>
