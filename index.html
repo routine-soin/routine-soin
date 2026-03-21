@@ -31,14 +31,13 @@
             line-height: 1.6;
             margin: 0;
             padding: 20px;
-            /* Empêche le "rebond" désagréable sur mobile */
             overscroll-behavior-y: none; 
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding-bottom: 40px; /* Espace en bas pour ne pas coller à l'écran */
+            padding-bottom: 40px; 
         }
 
         header {
@@ -142,14 +141,9 @@
             top: 0;
         }
 
-        /* Onglets pour les jours (Rendus collants/sticky) */
+        /* Onglets pour les jours */
         .tabs-container {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: var(--bg-main);
-            padding: 15px 0; /* Fond pour masquer le texte qui passe en dessous */
-            margin-bottom: 10px;
+            margin-bottom: 25px;
         }
 
         .tabs {
@@ -257,16 +251,6 @@
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
-        .objective {
-            text-align: center;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -276,7 +260,6 @@
             .tabs { flex-direction: column; }
             h1 { font-size: 1.5rem; }
             .products-grid { grid-template-columns: repeat(2, 1fr); }
-            /* Les boutons prennent moins de place en hauteur sur mobile quand on scrolle */
             .tab-btn { padding: 10px; }
         }
     </style>
@@ -355,8 +338,8 @@
             <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
-            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
-            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
+            <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
         </div>
     </div>
 
@@ -376,8 +359,8 @@
             <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
-            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
-            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
+            <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
         </div>
     </div>
 
@@ -398,15 +381,12 @@
             <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
-            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
-            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
+            <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
         </div>
     </div>
 
     <div id="jour4" class="tab-content">
-        <div class="objective">
-            L'objectif ici est de laisser la peau respirer un maximum.
-        </div>
         <div class="time-block">
             <h3>🌅 Le Matin</h3>
             <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
@@ -417,8 +397,8 @@
             <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
-            <div class="step"><strong>Traiter :</strong> Appliquez l'équivalent d'un petit pois d'Effaclar Duo+M sur les zones à boutons en couche fine. Lavez vos mains ensuite. <em>(1 soir sur 2 les deux premières semaines)</em>.</div>
-            <div class="step"><strong>Réparer :</strong> Appliquez votre Crème CeraVe PM par-dessus pour apaiser.</div>
+            <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
+            <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
         </div>
     </div>
 
@@ -442,21 +422,20 @@
         // Afficher le contenu actuel et ajouter la classe active au bouton
         document.getElementById(tabName).classList.add("active");
         
-        // Gérer le cas où on appelle la fonction via du code (sans événement click direct)
+        // Gérer le cas où on appelle la fonction via du code
         if(evt && evt.currentTarget) {
             evt.currentTarget.classList.add("active");
         } else {
             document.getElementById('btn-' + tabName).classList.add("active");
         }
 
-        // 🧠 SAUVEGARDE EN MÉMOIRE : On retient l'onglet cliqué
+        // Sauvegarder l'onglet actif
         localStorage.setItem('activeRoutineDay', tabName);
     }
 
-    // Au chargement de la page, on vérifie si un jour a été sauvegardé
+    // Récupérer le jour sauvegardé au chargement
     document.addEventListener('DOMContentLoaded', function() {
         var savedDay = localStorage.getItem('activeRoutineDay');
-        // Si un jour est en mémoire, on l'ouvre automatiquement
         if (savedDay) {
             openTab(null, savedDay);
         }
