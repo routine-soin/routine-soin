@@ -3,65 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ma Routine Skincare & Sport</title>
+    <title>Ma Routine Skincare & Sport Pro</title>
     
-    <meta name="theme-color" content="#121212">
+    <meta name="theme-color" content="#0a0a0a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Ma Routine">
+    <meta name="apple-mobile-web-app-title" content="Routine Pro">
     <link rel="apple-touch-icon" href="images/icon.png">
 
     <style>
         :root {
-            --bg-main: #121212;
-            --bg-card: #1e1e1e;
-            --bg-card-hover: #2a2a2a;
-            --text-main: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --accent-blue: #3b82f6;
-            --accent-gold: #fbbf24;
-            --border-radius: 16px;
+            /* Palette Premium */
+            --bg-main: #0a0a0a;
+            --bg-card: #141414;
+            --bg-card-hover: #1c1c1c;
+            --text-main: #f3f4f6;
+            --text-muted: #a0a0a0; /* Plus lisible */
+            --accent-blue: #1d4ed8; 
+            --accent-gold: #d4af37; 
+            --accent-gold-light: rgba(212, 175, 55, 0.15);
+            --border-radius: 20px;
+            /* Retour à la police native ultra-compacte et lisible */
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: var(--font-main);
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
             margin: 0;
             padding: 20px;
             overscroll-behavior-y: none; 
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding-bottom: 40px; 
+            padding-bottom: 60px; 
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-top: 20px;
+            margin-bottom: 50px;
+            padding-top: 30px;
         }
 
         h1 {
             color: var(--text-main);
             font-size: 2rem;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         h2 {
             color: var(--accent-gold);
             font-size: 1.3rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 700;
         }
 
-        /* Section Produits */
+        /* --- SYSTÈME DE GESTION DES OREILLERS PLAT & STYLÉ --- */
+        .pillow-tracker {
+            background: linear-gradient(145deg, #171717, #0d0d0d);
+            padding: 30px 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #262626;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.8);
+        }
+
+        .pillow-stock {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a1a;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid #333;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .laundry-btn {
+            background: linear-gradient(135deg, var(--accent-blue), #1e3a8a);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(29, 78, 216, 0.3);
+            font-family: var(--font-main);
+        }
+        .laundry-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.5); 
+        }
+
+        .pillows-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pillow-card {
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .pillow-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .pillow-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .faces-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .face-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            background-color: #262626;
+            border: 1px solid #404040;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-main);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .face-btn:hover {
+            background-color: #333;
+        }
+
+        .face-name {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .face-status {
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        /* État Propre */
+        .face-btn.clean {
+            border-left: 4px solid #16a34a;
+        }
+        .face-btn.clean .face-status {
+            color: #16a34a;
+        }
+
+        /* État Utilisé */
+        .face-btn.used {
+            background-color: var(--accent-gold-light);
+            border-color: rgba(212, 175, 55, 0.3);
+            border-left: 4px solid var(--accent-gold);
+        }
+        .face-btn.used .face-status {
+            color: var(--accent-gold);
+        }
+
+        .change-btn {
+            width: 100%;
+            background-color: rgba(29, 78, 216, 0.15);
+            color: #60a5fa;
+            border: 1px dashed rgba(29, 78, 216, 0.5);
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            font-family: var(--font-main);
+        }
+        .change-btn:hover { 
+            background-color: rgba(29, 78, 216, 0.25); 
+        }
+        .change-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background-color: transparent;
+            border-color: #333;
+            color: var(--text-muted);
+        }
+
+        /* Bouton "Changer les 2 taies" */
+        .change-both-btn {
+            width: 100%;
+            margin-top: 25px;
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.1), rgba(29, 78, 216, 0.15));
+            color: #60a5fa;
+            border: 1px dashed rgba(29, 78, 216, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-main);
+        }
+        .change-both-btn:hover { 
+            background: rgba(29, 78, 216, 0.25); 
+        }
+        .change-both-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background-color: transparent;
+            border-color: #333;
+            color: var(--text-muted);
+        }
+
+        /* --- RESTE DU SITE --- */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -74,21 +258,23 @@
             border-radius: var(--border-radius);
             padding: 15px;
             text-align: center;
-            border: 1px solid #333;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            border: 1px solid #262626;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
         .product-card:hover {
             transform: translateY(-5px);
             background-color: var(--bg-card-hover);
+            border-color: #404040;
         }
 
         .product-image {
             width: 100%;
             height: 120px;
             background-color: #ffffff;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            border-radius: 10px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -96,25 +282,24 @@
         }
 
         .product-image img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 85%;
+            max-height: 85%;
             object-fit: contain;
         }
 
         .product-name {
             font-size: 0.9rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--text-main);
         }
 
-        /* Section Règles d'Or */
         .rules-card {
             background-color: var(--bg-card);
             padding: 25px;
             border-radius: var(--border-radius);
-            border: 1px solid #333;
+            border: 1px solid #262626;
             margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .rules-list {
@@ -128,10 +313,13 @@
             padding-left: 30px;
             position: relative;
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
+        .rules-list li:last-child { margin-bottom: 0; }
 
         .rules-list li strong {
             color: var(--text-main);
+            font-weight: 700;
         }
 
         .rules-list li::before {
@@ -139,12 +327,10 @@
             position: absolute;
             left: 0;
             top: 0;
+            font-size: 1.1rem;
         }
 
-        /* Onglets pour les jours */
-        .tabs-container {
-            margin-bottom: 25px;
-        }
+        .tabs-container { margin-bottom: 25px; }
 
         .tabs {
             display: flex;
@@ -154,53 +340,56 @@
 
         .tab-btn {
             flex: 1;
-            padding: 15px 10px;
+            padding: 14px 10px;
             background-color: var(--bg-card);
-            border: 1px solid #333;
-            border-radius: var(--border-radius);
+            border: 1px solid #262626;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--text-muted);
             transition: all 0.3s ease;
             text-align: center;
             min-width: 120px;
             font-size: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            font-family: var(--font-main);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
+        .tab-btn:hover { background-color: var(--bg-card-hover); }
+
         .tab-btn.active {
-            background-color: var(--accent-blue);
+            background: linear-gradient(135deg, var(--accent-blue), #1e3a8a);
             color: white;
             border-color: var(--accent-blue);
+            box-shadow: 0 6px 15px rgba(29, 78, 216, 0.3);
         }
 
         .tab-btn small {
             display: block;
             font-size: 0.75rem;
-            font-weight: normal;
-            margin-top: 5px;
-            opacity: 0.8;
+            font-weight: 500;
+            margin-top: 4px;
+            opacity: 0.85;
         }
 
-        /* Contenu des jours */
         .tab-content {
             display: none;
             background: var(--bg-card);
-            padding: 30px;
+            padding: 30px 25px;
             border-radius: var(--border-radius);
-            border: 1px solid #333;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid #262626;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.4s ease;
         }
 
         .time-block {
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #262626;
         }
 
         .time-block:last-child {
@@ -210,45 +399,64 @@
         }
 
         .time-block h3 {
-            color: var(--accent-blue);
+            color: #60a5fa;
             margin-top: 0;
             font-size: 1.2rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 700;
         }
 
         .step {
             margin-bottom: 12px;
             color: var(--text-muted);
+            font-size: 0.95rem; /* Taille ajustée pour le mobile */
         }
 
         .step strong {
             color: var(--text-main);
             display: inline-block;
             min-width: 90px;
+            font-weight: 700;
         }
 
+        /* Étiquette jaune compactée pour éviter les retours à la ligne */
         .tag {
-            background: rgba(251, 191, 36, 0.2);
+            background: var(--accent-gold-light);
             color: var(--accent-gold);
-            font-size: 0.75rem;
-            padding: 3px 8px;
+            font-size: 0.7rem;
+            padding: 2px 6px;
             border-radius: 6px;
-            font-weight: bold;
+            font-weight: 800;
             margin-left: 5px;
-            border: 1px solid rgba(251, 191, 36, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            vertical-align: middle;
+            white-space: nowrap;
         }
 
         .tag-blue {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.15);
             color: #60a5fa;
-            font-size: 0.75rem;
-            padding: 3px 8px;
+            font-size: 0.7rem;
+            padding: 2px 6px;
             border-radius: 6px;
-            font-weight: bold;
+            font-weight: 800;
             margin-left: 5px;
             border: 1px solid rgba(59, 130, 246, 0.3);
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .objective {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #262626;
         }
 
         @keyframes fadeIn {
@@ -258,9 +466,11 @@
 
         @media (max-width: 600px) {
             .tabs { flex-direction: column; }
-            h1 { font-size: 1.5rem; }
+            h1 { font-size: 1.6rem; }
             .products-grid { grid-template-columns: repeat(2, 1fr); }
-            .tab-btn { padding: 10px; }
+            .pillows-container { grid-template-columns: 1fr; }
+            .tab-btn { padding: 12px; }
+            .pillow-stock { flex-direction: column; gap: 12px; text-align: center; }
         }
     </style>
 </head>
@@ -269,8 +479,54 @@
 <div class="container">
     <header>
         <h1>🌟 Ma Routine Skincare</h1>
-        <p style="color: var(--text-muted); margin-top: 0;">Anti-Imperfections & Sport</p>
+        <p style="color: var(--text-muted); margin-top: 0; font-size: 1rem; font-weight: 500;">Anti-Imperfections & Sport</p>
     </header>
+
+    <section class="pillow-tracker">
+        <h2>🛏️ Gestion des Oreillers</h2>
+        
+        <div class="pillow-stock">
+            <div>🧺 Taies propres dans le placard : <strong id="stock-count" style="font-size: 1.1rem;">2</strong><strong>/2</strong></div>
+            <button class="laundry-btn" onclick="doLaundry()">Faire une lessive</button>
+        </div>
+
+        <div class="pillows-container">
+            <div class="pillow-card">
+                <div class="pillow-title">🛌 Oreiller 1</div>
+                <div class="faces-container">
+                    <button class="face-btn clean" id="p1f1" onclick="toggleFace('p1f1')">
+                        <span class="face-name">Face A</span>
+                        <span class="face-status">✨ Propre</span>
+                    </button>
+                    <button class="face-btn clean" id="p1f2" onclick="toggleFace('p1f2')">
+                        <span class="face-name">Face B</span>
+                        <span class="face-status">✨ Propre</span>
+                    </button>
+                </div>
+                <button class="change-btn" id="change-btn-1" onclick="changePillow(1)">🛏️ Changer Taie</button>
+            </div>
+
+            <div class="pillow-card">
+                <div class="pillow-title">🛌 Oreiller 2</div>
+                <div class="faces-container">
+                    <button class="face-btn clean" id="p2f1" onclick="toggleFace('p2f1')">
+                        <span class="face-name">Face A</span>
+                        <span class="face-status">✨ Propre</span>
+                    </button>
+                    <button class="face-btn clean" id="p2f2" onclick="toggleFace('p2f2')">
+                        <span class="face-name">Face B</span>
+                        <span class="face-status">✨ Propre</span>
+                    </button>
+                </div>
+                <button class="change-btn" id="change-btn-2" onclick="changePillow(2)">🛏️ Changer Taie</button>
+            </div>
+        </div>
+        
+        <button class="change-both-btn" id="change-both-btn" onclick="changeBothPillows()">
+            🛏️🔄 Changer les 2 taies d'un coup
+        </button>
+
+    </section>
 
     <section>
         <h2>🛍️ Mes Produits Essentiels</h2>
@@ -309,7 +565,7 @@
             <li><strong>À la salle de sport :</strong> Utilisez une grande serviette pour les machines et une petite serviette propre (ou essuie-tout) UNIQUEMENT pour la sueur du visage. Ne mélangez jamais.</li>
             <li><strong>Bandeau :</strong> Utilisez un bandeau propre à chaque séance.</li>
             <li><strong>Le téléphone :</strong> Éloignez-le des joues (utilisez le haut-parleur ou des écouteurs) et désinfectez l'écran régulièrement.</li>
-            <li><strong>La nuit :</strong> Changez d'oreiller, ou retournez l'oreiller. Si toutes les faces ont été touchées au moins 1 fois, changez de taie d'oreiller et mettez à laver celles utilisées.</li>
+            <li><strong>La nuit :</strong> Servez-vous du gestionnaire d'oreillers ci-dessus ! Utilisez une face par nuit et changez de taie dès que les deux faces sont utilisées.</li>
         </ul>
     </section>
 
@@ -324,121 +580,220 @@
 
     <div id="jour1" class="tab-content active">
         <div class="time-block">
-            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant la salle)</span></h3>
+            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant la salle)</span></h3>
             <div class="step"><strong>Action :</strong> Rincez simplement votre visage à l'eau tiède.</div>
             <div class="step"><strong>Optionnel :</strong> Si le soleil tape fort sur le trajet, mettez une petite touche de crème solaire Avène SPF 50+.</div>
         </div>
         <div class="time-block">
-            <h3>🚿 Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Sous la douche)</span></h3>
+            <h3>🚿 Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Sous la douche)</span></h3>
             <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
             <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
             <div class="step"><strong>Protéger :</strong> Attendez 1 minute, puis appliquez généreusement la crème solaire Avène SPF 50+ (équivalent de 2 lignes sur les doigts) pour protéger les cicatrices.</div>
+            <div class="step"><strong>Barbe :</strong> Gratte une noisette de Baume, chauffe-le dans tes paumes jusqu'à ce qu'il fonde. Applique-le en caressant ta barbe de haut en bas.</div>
+            <div class="step"><strong>Finition :</strong> Passe la Brosse plusieurs fois pour bien plaquer les poils et donner une forme nette.</div>
         </div>
         <div class="time-block">
-            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
             <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
             <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
+            <div class="step"><strong>Barbe (Pousse) :</strong> 3 gouttes d'Huile de Ricin sur le bout des doigts. Masse la peau sous les poils (fais des cercles). Termine par un coup de Brosse pour répartir l'huile.</div>
         </div>
     </div>
 
     <div id="jour2" class="tab-content">
         <div class="time-block">
-            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant la salle)</span></h3>
+            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant la salle)</span></h3>
             <div class="step"><strong>Action :</strong> Rincez simplement votre visage à l'eau tiède.</div>
             <div class="step"><strong>Optionnel :</strong> Si le soleil tape fort sur le trajet, mettez une petite touche de crème solaire Avène SPF 50+.</div>
         </div>
         <div class="time-block">
-            <h3>🚿 Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Sous la douche)</span></h3>
+            <h3>🚿 Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Sous la douche)</span></h3>
             <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
             <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
             <div class="step"><strong>Protéger :</strong> <span class="tag-blue">OPTIONNEL</span> La crème solaire Avène n'est pas obligatoire si vous restez à l'intérieur à l'abri du soleil. Attention toutefois : si vous passez la journée collé(e) à une fenêtre très ensoleillée, mettez-en une fine couche. Si vous sortez en appliquer avant de sortir !</div>
+            <div class="step"><strong>Barbe :</strong> Gratte une demi-noisette de Baume, chauffe-le dans tes paumes jusqu'à ce qu'il fonde. Applique-le en caressant ta barbe de haut en bas.</div>
+            <div class="step"><strong>Finition :</strong> Passe la Brosse plusieurs fois pour bien plaquer les poils et donner une forme nette.</div>
         </div>
         <div class="time-block">
-            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
             <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
             <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
+            <div class="step"><strong>Barbe (Pousse) :</strong> 3 gouttes d'Huile de Ricin sur le bout des doigts. Masse la peau sous les poils (fais des cercles). Termine par un coup de Brosse pour répartir l'huile.</div>
         </div>
     </div>
 
     <div id="jour3" class="tab-content">
         <div class="time-block">
-            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant les cours)</span></h3>
+            <h3>🌅 Le Matin <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant les cours)</span></h3>
             <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
             <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
             <div class="step"><strong>Protéger :</strong> Attendez 1 minute, puis appliquez généreusement la crème solaire Avène SPF 50+ (équivalent de 2 lignes sur les doigts) pour protéger les cicatrices.</div>
+            <div class="step"><strong>Barbe :</strong> Gratte une demi-noisette de Baume, chauffe-le dans tes paumes jusqu'à ce qu'il fonde. Applique-le en caressant ta barbe de haut en bas.</div>
+            <div class="step"><strong>Finition :</strong> Passe la Brosse plusieurs fois pour bien plaquer les poils et donner une forme nette.</div>
         </div>
         <div class="time-block">
-            <h3>🏋️ Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Fin d'aprem / Début soirée)</span></h3>
+            <h3>🏋️ Après la salle <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Fin d'aprem / Début soirée)</span></h3>
             <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
             <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
             <div class="step"><strong>Protéger :</strong> <span class="tag-blue">OPTIONNEL</span> La crème solaire Avène n'est pas obligatoire si vous restez à l'intérieur à l'abri du soleil. Attention toutefois : si vous passez la journée collé(e) à une fenêtre très ensoleillée, mettez-en une fine couche. Si vous sortez en appliquer avant de sortir !</div>
         </div>
         <div class="time-block">
-            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
             <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
-            <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
+            <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la on visage.</div>
+            <div class="step"><strong>Barbe (Pousse) :</strong> 3 gouttes d'Huile de Ricin sur le bout des doigts. Masse la peau sous les poils (fais des cercles). Termine par un coup de Brosse pour répartir l'huile.</div>
         </div>
     </div>
 
     <div id="jour4" class="tab-content">
+        <div class="objective">
+            L'objectif ici est de laisser la peau respirer un maximum.
+        </div>
         <div class="time-block">
             <h3>🌅 Le Matin</h3>
             <div class="step"><strong>Nettoyer :</strong> Faites mousser 1/2 pompe de Gel Moussant CeraVe. Massez doucement pendant 30 à 60s. Rincez et séchez en tapotant avec une serviette propre.</div>
             <div class="step"><strong>Hydrater :</strong> Appliquez une fine couche de Crème CeraVe PM.</div>
             <div class="step"><strong>Protéger :</strong> <span class="tag-blue">OPTIONNEL</span> La crème solaire Avène n'est pas obligatoire si vous restez à l'intérieur à l'abri du soleil. Attention toutefois : si vous passez la journée collé(e) à une fenêtre très ensoleillée, mettez-en une fine couche. Si vous sortez en appliquer avant de sortir !</div>
+            <div class="step"><strong>Barbe :</strong> Gratte une demi-noisette de Baume, chauffe-le dans tes paumes jusqu'à ce qu'il fonde. Applique-le en caressant ta barbe de haut en bas.</div>
+            <div class="step"><strong>Finition :</strong> Passe la Brosse plusieurs fois pour bien plaquer les poils et donner une forme nette.</div>
         </div>
         <div class="time-block">
-            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(Avant de dormir)</span></h3>
+            <h3>🌙 Le Soir <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">(Avant de dormir)</span></h3>
             <div class="step"><strong>Nettoyage :</strong> Lavez avec le Gel Moussant CeraVe pour retirer crème solaire et pollution. Séchez en tapotant.</div>
             <div class="step"><strong>ATTENDRE :</strong> Patientez 2 à 3 minutes que votre peau soit parfaitement sèche <span class="tag">TRÈS IMPORTANT</span></div>
             <div class="step"><strong>Traiter :</strong> Appliquez l'Effaclar Duo+M sur les zones du visage puis étaler.</div>
             <div class="step"><strong>Réparer :</strong> Mettre une noisette de crème CeraVe PM dans la paume de ta main, frotter tes deux mains l'une contre l'autre pendant 2 ou 3 secondes et appliquez-la sur ton visage.</div>
+            <div class="step"><strong>Barbe (Pousse) :</strong> 3 gouttes d'Huile de Ricin sur le bout des doigts. Masse la peau sous les poils (fais des cercles). Termine par un coup de Brosse pour répartir l'huile.</div>
         </div>
     </div>
 
 </div>
 
 <script>
-    // Fonction d'ouverture des onglets
+    // --- GESTION DES ONGLETS DE JOURS ---
     function openTab(evt, tabName) {
-        // Cacher tous les contenus
         var tabContents = document.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabContents.length; i++) {
-            tabContents[i].classList.remove("active");
-        }
-
-        // Retirer la classe 'active' de tous les boutons
+        for (var i = 0; i < tabContents.length; i++) { tabContents[i].classList.remove("active"); }
         var tabBtns = document.getElementsByClassName("tab-btn");
-        for (var i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].classList.remove("active");
-        }
-
-        // Afficher le contenu actuel et ajouter la classe active au bouton
+        for (var i = 0; i < tabBtns.length; i++) { tabBtns[i].classList.remove("active"); }
         document.getElementById(tabName).classList.add("active");
-        
-        // Gérer le cas où on appelle la fonction via du code
-        if(evt && evt.currentTarget) {
-            evt.currentTarget.classList.add("active");
-        } else {
-            document.getElementById('btn-' + tabName).classList.add("active");
-        }
-
-        // Sauvegarder l'onglet actif
+        if(evt && evt.currentTarget) { evt.currentTarget.classList.add("active"); } else { document.getElementById('btn-' + tabName).classList.add("active"); }
         localStorage.setItem('activeRoutineDay', tabName);
     }
 
-    // Récupérer le jour sauvegardé au chargement
+    // --- GESTION DES OREILLERS ---
+    let pillowStock = localStorage.getItem('pillowStock') !== null ? parseInt(localStorage.getItem('pillowStock')) : 2;
+    let pillowFaces = JSON.parse(localStorage.getItem('pillowFaces')) || {
+        p1f1: false, p1f2: false, p2f1: false, p2f2: false
+    };
+
+    function initPillows() {
+        const stockEl = document.getElementById('stock-count');
+        stockEl.innerText = pillowStock;
+        stockEl.style.color = (pillowStock === 0) ? '#ef4444' : 'var(--accent-blue)';
+
+        for (let faceId in pillowFaces) {
+            updateFaceState(faceId, pillowFaces[faceId]);
+        }
+        updateChangeButtons();
+    }
+
+    // Clique sur une face (A ou B)
+    function toggleFace(faceId) {
+        pillowFaces[faceId] = !pillowFaces[faceId];
+        localStorage.setItem('pillowFaces', JSON.stringify(pillowFaces));
+        
+        updateFaceState(faceId, pillowFaces[faceId]);
+        updateChangeButtons();
+    }
+
+    function updateFaceState(faceId, isUsed) {
+        const faceBtn = document.getElementById(faceId);
+        const statusSpan = faceBtn.querySelector('.face-status');
+        
+        if (isUsed) {
+            faceBtn.classList.remove('clean');
+            faceBtn.classList.add('used');
+            statusSpan.innerText = '💤 Utilisée';
+        } else {
+            faceBtn.classList.remove('used');
+            faceBtn.classList.add('clean');
+            statusSpan.innerText = '✨ Propre';
+        }
+    }
+
+    function updateChangeButtons() {
+        const btn1 = document.getElementById('change-btn-1');
+        const btn2 = document.getElementById('change-btn-2');
+        const btnBoth = document.getElementById('change-both-btn');
+
+        // Active les boutons individuels si les DEUX faces sont utilisées
+        btn1.disabled = !(pillowFaces.p1f1 && pillowFaces.p1f2);
+        btn2.disabled = !(pillowFaces.p2f1 && pillowFaces.p2f2);
+
+        // Active le bouton global si les 4 faces sont utilisées
+        btnBoth.disabled = !(pillowFaces.p1f1 && pillowFaces.p1f2 && pillowFaces.p2f1 && pillowFaces.p2f2);
+    }
+
+    function changePillow(pillowNum) {
+        if (pillowStock > 0) {
+            if(confirm("Changer la taie d'oreiller et en prendre une propre dans le placard ?")) {
+                pillowStock--;
+                localStorage.setItem('pillowStock', pillowStock);
+                
+                // Remet les deux faces de l'oreiller à l'état propre
+                pillowFaces[`p${pillowNum}f1`] = false;
+                pillowFaces[`p${pillowNum}f2`] = false;
+                localStorage.setItem('pillowFaces', JSON.stringify(pillowFaces));
+                
+                initPillows();
+            }
+        } else {
+            alert("❌ Stock épuisé dans le placard ! Il faut lancer une machine 🧺.");
+        }
+    }
+
+    // Fonction : Changer les deux taies en même temps
+    function changeBothPillows() {
+        if (pillowStock >= 2) {
+            if(confirm("Changer les DEUX taies d'oreiller d'un coup ?")) {
+                pillowStock -= 2;
+                localStorage.setItem('pillowStock', pillowStock);
+                
+                // Reset de toutes les faces
+                pillowFaces.p1f1 = false;
+                pillowFaces.p1f2 = false;
+                pillowFaces.p2f1 = false;
+                pillowFaces.p2f2 = false;
+                localStorage.setItem('pillowFaces', JSON.stringify(pillowFaces));
+                
+                initPillows();
+            }
+        } else {
+            alert("❌ Pas assez de taies dans le placard ! Il vous en faut 2 pour cette action. Pensez à faire une lessive 🧺.");
+        }
+    }
+
+    function doLaundry() {
+        if(confirm("Confirmez-vous avoir lavé vos anciennes taies ?")) {
+            pillowStock = 2;
+            localStorage.setItem('pillowStock', pillowStock);
+            initPillows();
+            alert("✅ Parfait ! Vous avez 2 taies toutes propres de retour dans le placard.");
+        }
+    }
+
+    // --- INITIALISATION AU CHARGEMENT ---
     document.addEventListener('DOMContentLoaded', function() {
         var savedDay = localStorage.getItem('activeRoutineDay');
-        if (savedDay) {
-            openTab(null, savedDay);
-        }
+        if (savedDay) { openTab(null, savedDay); }
+        initPillows(); 
     });
 </script>
 
